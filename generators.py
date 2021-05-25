@@ -9,8 +9,9 @@ def generator_md5(file):
     with open(file, 'r') as file:
         for f in file.readlines():
             hash_str = hashlib.md5(f.strip().encode()).hexdigest()
-            print(hash_str)
+            yield hash_str
 
 
 if __name__ == '__main__':
-    generator_md5('links.txt')
+    for md5_hash in generator_md5('links.txt'):
+        print(md5_hash)
